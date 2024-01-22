@@ -9,6 +9,7 @@ const Colleges = new mongoose.Schema({
   collegeId: {
     type: String,
     required: true,
+    unique: true,
   },
   collegename: {
     type: String,

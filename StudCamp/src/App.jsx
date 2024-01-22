@@ -14,6 +14,7 @@ import StudentRegi from "./pages/Student/StudentRegi";
 import CollegeRegi from "./pages/College/CollegeRegi";
 import AdminDashboard from "./pages/Dashboards/AdminDashboard/AdminDashboard";
 import AdminLogin from "./pages/Admin/AdminLogin";
+import CollegeDashboard from "./pages/Dashboards/CollegeDashboard/CollegeDashboard";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -39,8 +40,9 @@ function App() {
         <Route path="/admin/AdminDashboard" element={<AdminDashboard />} />
 
         <Route path="/login/AdminLogin" element={<AdminLogin />} />
+        {/* <Route path="/login/college" element={<AdminLogin />} /> */}
 
-        <Route path="/login/AdminLogin" element={<AdminLogin />} />
+        <Route path="/college/CollegeDashboard" element={<CollegeDashboard/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

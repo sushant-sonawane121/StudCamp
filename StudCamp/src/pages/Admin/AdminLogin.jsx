@@ -6,8 +6,10 @@ const AdminLogin = () => {
   const navigateTo = useNavigate();
 
   useEffect(() => {
-    const adminUser = localStorage.getItem("logedAdmin");
+    let adminUser = localStorage.getItem("logedAdminId");
+   
     if (adminUser) {
+      
       navigateTo('/admin/AdminDashboard');
     }
     // localStorage.setItem("logedAdmin","");
@@ -40,12 +42,19 @@ const AdminLogin = () => {
 
       if (response.ok) {
         const responseData = await response.json();
-        localStorage.setItem("logedAdmin", JSON.stringify(responseData.data));
-        // console.log("Stored Data:", responseData.data);
+        const userId = responseData.id;
+        const username = responseData.userName;
+      
+        localStorage.setItem("logedAdminId", JSON.stringify(userId));
+        localStorage.setItem("logedAdminUsername", JSON.stringify(username));
+      
+        // let lcstor = JSON.parse(localStorage.getItem("logedAdminUsername"));
+        // console.log("Stored Data:", lcstor);
         navigateTo('/admin/AdminDashboard');
       } else {
         console.log("Data not received by the server");
       }
+      
 
     } catch (error) {
       console.error("Error:", error);

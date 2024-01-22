@@ -1,31 +1,27 @@
 // components/common/Header/Header.jsx
 
 import React from "react";
-import { Link, useNavigate  } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import CustomLink from "../Link/Link";
 
 const Header = () => {
   let nevigateTo = useNavigate();
-  const adminUser = localStorage.getItem("logedAdmin");
+  const adminUser = localStorage.getItem("logedAdminId");
 
-  const handleLogout = ()=>{
-    let emptdata = localStorage.setItem("logedAdmin","");
-    
+  const handleLogout = () => {
+    let emptdata = localStorage.setItem("logedAdminId", "");
+
     if (emptdata === undefined) {
       nevigateTo("/");
-    }
-    else{
+    } else {
       alert("somethisn went wrong about url redireaction in header");
     }
-    
-  }
+  };
 
   return (
-    <header className="bg-gray-800 p-4">
+    <header className="bg-gray-800 p-4 sticky top-0">
       <nav className="container mx-auto flex items-center justify-between">
-        <Link to="/" className="text-white text-xl font-bold">
-          StudCamp
-        </Link>
+        <CustomLink text={"StudCamp"} to={"/"} color={"text-teal-500"} font={"text-xl"}/>
 
         <div className="hidden md:flex space-x-4">
           <Link to="/" className="text-white hover:text-gray-300">
@@ -40,9 +36,15 @@ const Header = () => {
           <Link to="/news" className="text-white hover:text-gray-300">
             News
           </Link>
-          {adminUser?(<Link to="/admin/AdminDashboard" className="text-white hover:text-gray-300">
-            Dashboard
-          </Link>):("")}
+          {adminUser ? (
+            <CustomLink
+              text={"Dashboard"}
+              to={"/admin/AdminDashboard"}
+              color="text-red-500"
+            />
+          ) : (
+            ""
+          )}
         </div>
 
         <div className="md:flex items-center space-x-4">
@@ -53,10 +55,13 @@ const Header = () => {
             </Link>
           ) : (
             <>
-            <button onClick={handleLogout} className="text-white hover:text-gray-300" >
-              Logout
-            </button>
-            {/* <button className="text-black bg-teal-800 py-2 hover:text-gray-300" >
+              <button
+                onClick={handleLogout}
+                className="text-white hover:text-gray-300"
+              >
+                Logout
+              </button>
+              {/* <button className="text-black bg-teal-800 py-2 hover:text-gray-300" >
               Admin
             </button> */}
             </>

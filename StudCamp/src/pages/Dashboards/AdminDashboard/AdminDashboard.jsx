@@ -6,7 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 const AdminDashboard = () => {
   // let navigateTo = useNavigate();
   let navigateTo = useNavigate();
-  const adminUser = localStorage.getItem("logedAdmin");
+  const adminUser = localStorage.getItem("logedAdminId");
+  const AdminUsername = localStorage.getItem("logedAdminUsername");
+  const Asername = AdminUsername.replaceAll("\"", "");
+  console.log(typeof AdminUsername);
 
   useEffect(() => {
     if (!adminUser) {
@@ -19,7 +22,8 @@ const AdminDashboard = () => {
       {/* Left Navigation Bar */}
       <div className="bg-gray-800 text-white w-1/5 p-4">
         <h2 className="text-xl font-bold mb-4">Admin Dashboard</h2>
-        <p className="mb-4">Welcome, Admin123!</p>
+        <p className="mb-4">Welcome, {adminUser ? Asername : "Admin"}</p>
+
 
         <ul>
           <li className="mb-2">

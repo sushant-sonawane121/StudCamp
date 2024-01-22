@@ -5,6 +5,7 @@ const User = require("./src/Schemas/User");
 const College = require("./src/Schemas/College");
 const Contact = require("./src/Schemas/Contact");
 const Admin = require("./src/Schemas/Admin");
+const Notice = require("./src/Schemas/Notice");
 
 const app = express();
 const port = process.env.port || 3000;
@@ -117,13 +118,34 @@ app.post("/adminLogin", async (req, res) => {
       password: data.password,
     });
     if (sc) {
-      res.status(200).send({ message: "Data found successfully", data: sc._id, });
+      res.status(200).send({ message: "Data found successfully", id: sc._id, userName:sc.username, collegename:sc.collegename, collegeId:sc.collegeId });
     } else {
       res.status(404).send({ message: "Data not found" });
     }
   } catch (error) {
     console.log(error);
     res.status(500).send({ message: "Internal server error" });
+  }
+});
+
+app.post("/sendNotice", async (req, res) => {
+  try {
+    const noticeData = req.body;
+
+    // Assuming you have a Mongoose model named 'Notice'
+    const nt = new Notice(noticeData);
+
+    // Use async/await for the save operation
+    const savedNotice = await nt.save();
+
+    if (savedNotice) {
+      res.status(200).send({ message: "Data saved successfully", savedNotice });
+    } else {
+      res.status(404).send({ message: "Data not found" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ message: "Internal Server Error" });
   }
 });
 
