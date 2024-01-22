@@ -1,2 +1,15 @@
 /backend/node_modules
 /StudCamp/node_modules
+/StudCamp/logs
+/StudCamp/*.log
+/StudCamp/npm-debug.log*
+/StudCamp/yarn-debug.log*
+/StudCamp/yarn-error.log*
+/StudCamp/pnpm-debug.log*
+/StudCamp/lerna-debug.log*
+
+
+
+
+
+
