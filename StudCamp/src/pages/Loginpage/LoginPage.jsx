@@ -2,6 +2,7 @@ import React from "react";
 import {Link} from 'react-router-dom';
 
 const LoginPage = () => {
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-800">
       <div className="bg-white p-8 rounded-md shadow-md w-full max-w-md">
@@ -16,7 +17,7 @@ const LoginPage = () => {
           </button>
           <p className="mt-2 text-center text-gray-600">
             Don't have an account?{" "}
-            <Link to="#" className="text-blue-500 hover:underline">
+            <Link to="/student/register" className="text-blue-500 hover:underline">
               Register
             </Link>
           </p>
@@ -29,7 +30,7 @@ const LoginPage = () => {
           </button>
           <p className="mt-2 text-center text-gray-600">
             Don't have an account?{" "}
-            <Link to="#" className="text-green-500 hover:underline">
+            <Link to="/college/register" className="text-green-500 hover:underline">
               Register
             </Link>
           </p>
@@ -38,7 +39,9 @@ const LoginPage = () => {
         {/* Admin Login */}
         <div>
           <button className="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600">
+          <Link to="/login/AdminLogin" className=" w-full ">
             Admin Login
+          </Link>
           </button>
         </div>
       </div>

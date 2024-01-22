@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-  width: 12px;
+  display: none;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: #f9a828; /* Yellow Orange */
-  border-radius: 6px;
-}
+/* ::-webkit-scrollbar-thumb { */
+  /* background-color: #f9a828; Yellow Orange */
+  /* border-radius: 6px;
+} */
 
-::-webkit-scrollbar-track {
-  background-color: #ecf0f1; /* Silver Sand */
-}
+/* ::-webkit-scrollbar-track { */
+  /* background-color: #ecf0f1; Silver Sand */
+/* } */

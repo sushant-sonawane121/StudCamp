@@ -1,11 +1,24 @@
 // components/common/Header/Header.jsx
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 
 
 const Header = () => {
-  let login = false;
+  let nevigateTo = useNavigate();
+  const adminUser = localStorage.getItem("logedAdmin");
+
+  const handleLogout = ()=>{
+    let emptdata = localStorage.setItem("logedAdmin","");
+    
+    if (emptdata === undefined) {
+      nevigateTo("/");
+    }
+    else{
+      alert("somethisn went wrong about url redireaction in header");
+    }
+    
+  }
 
   return (
     <header className="bg-gray-800 p-4">
@@ -21,17 +34,33 @@ const Header = () => {
           <Link to="/about" className="text-white hover:text-gray-300">
             About
           </Link>
-          <Link to="/services" className="text-white hover:text-gray-300">
-            Services
-          </Link>
           <Link to="/contact" className="text-white hover:text-gray-300">
             Contact
           </Link>
+          <Link to="/news" className="text-white hover:text-gray-300">
+            News
+          </Link>
+          {adminUser?(<Link to="/admin/AdminDashboard" className="text-white hover:text-gray-300">
+            Dashboard
+          </Link>):("")}
         </div>
 
         <div className="md:flex items-center space-x-4">
           {/* Login Button */}
-          <Link to="/loginPage"  className="text-white hover:text-gray-300">Login</Link>
+          {!adminUser ? (
+            <Link to="/loginPage" className="text-white hover:text-gray-300">
+              Login
+            </Link>
+          ) : (
+            <>
+            <button onClick={handleLogout} className="text-white hover:text-gray-300" >
+              Logout
+            </button>
+            {/* <button className="text-black bg-teal-800 py-2 hover:text-gray-300" >
+              Admin
+            </button> */}
+            </>
+          )}
 
           {/* Mobile menu button */}
           <button

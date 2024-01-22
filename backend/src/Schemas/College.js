@@ -29,7 +29,7 @@ const Colleges = new mongoose.Schema({
     required: true,
   },
   isAdmin:{
-    type:Boolean
+    type:Boolean,
   }
 });
 
