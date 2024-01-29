@@ -38,7 +38,7 @@ const CollegeDashboard = () => {
         <div className="bg-white rounded-lg shadow-md p-2 flex justify-between">
           {/* Main Content */}
           <h1 className="text-2xl font-bold py-1">College Dashboard</h1>
-          <h1 className="text-md font-bold py-1 cursor-pointer text-red-600">Logout</h1>
+          {/* <h1 className="text-md font-bold py-1 cursor-pointer text-red-600">Logout</h1> */}
           {/* Add your dashboard components and content here */}
         </div>
         <CampusNotice/>

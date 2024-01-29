@@ -29,7 +29,7 @@ const CollegeLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+     console.log(formData);
     try {
       const response = await fetch("http://localhost:3000/CollegeLogin", {
         method: "POST",
@@ -41,6 +41,7 @@ const CollegeLogin = () => {
 
       if (response.ok) {
         const responseData = await response.json();
+        // console.log(responseData);
         const userId = responseData.id;
         const username = responseData.userName;
 
@@ -57,7 +58,7 @@ const CollegeLogin = () => {
 
         // let lcstor = JSON.parse(localStorage.getItem("logedAdminUsername"));
         // console.log("Stored Data:", lcstor);
-        navigateTo("/college/Dashboard");
+        navigateTo("/college/CollegeDashboard");
       } else {
         console.log("Data not received by the server");
       }
@@ -70,7 +71,7 @@ const CollegeLogin = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-800">
       <div className="bg-white p-8 rounded-md shadow-md w-full max-w-md">
         <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">
-          Admin Login
+          College Login
         </h2>
 
         <form onSubmit={handleSubmit}>

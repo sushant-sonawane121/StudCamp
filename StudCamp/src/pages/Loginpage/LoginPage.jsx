@@ -26,7 +26,9 @@ const LoginPage = () => {
         {/* College Login */}
         <div className="mb-4">
           <button className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600">
-            College Login
+          <Link to="/college/login" className="text-black">
+              College Login
+            </Link>
           </button>
           <p className="mt-2 text-center text-gray-600">
             Don't have an account?{" "}

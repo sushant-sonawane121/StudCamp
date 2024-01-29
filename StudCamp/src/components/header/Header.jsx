@@ -6,12 +6,25 @@ import CustomLink from "../Link/Link";
 
 const Header = () => {
   let nevigateTo = useNavigate();
-  const adminUser = localStorage.getItem("logedAdminId");
+  let adminUser = localStorage.getItem("logedAdminId");
+  let collegeUser = localStorage.getItem("CollegeAdminId");
+  let uniUser = "";
+
+  if (adminUser) {
+    uniUser = adminUser;
+  }
+  else if(collegeUser){
+    uniUser = collegeUser;
+  }
+  
 
   const handleLogout = () => {
-    let emptdata = localStorage.setItem("logedAdminId", "");
+    // let emptdata = localStorage.setItem("logedAdminId", "");
+    //  let clgdata = localStorage.setItem("CollegeAdminId", "");
+ 
 
-    if (emptdata === undefined) {
+
+    if (uniUser === null) {
       nevigateTo("/");
     } else {
       alert("somethisn went wrong about url redireaction in header");
@@ -49,7 +62,7 @@ const Header = () => {
 
         <div className="md:flex items-center space-x-4">
           {/* Login Button */}
-          {!adminUser ? (
+          {!uniUser? (
             <Link to="/loginPage" className="text-white hover:text-gray-300">
               Login
             </Link>

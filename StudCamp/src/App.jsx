@@ -12,11 +12,12 @@ import LoginPage from "./pages/Loginpage/LoginPage";
 import TermsAndConditions from "./pages/Terms and Conditions/TermsAndConditions";
 import StudentRegi from "./pages/Student/StudentRegi";
 import CollegeRegi from "./pages/College/CollegeRegi";
+import CollegeLogin from "./pages/College/CollegeLogin";
 import AdminDashboard from "./pages/Dashboards/AdminDashboard/AdminDashboard";
 import AdminLogin from "./pages/Admin/AdminLogin";
 import CollegeDashboard from "./pages/Dashboards/CollegeDashboard/CollegeDashboard";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+
 
 function App() {
   
@@ -36,6 +37,7 @@ function App() {
         <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
         <Route path="/student/register" element={<StudentRegi />} />
         <Route path="/college/register" element={<CollegeRegi />} />
+        <Route path="/college/login" element={<CollegeLogin />} />
 
         <Route path="/admin/AdminDashboard" element={<AdminDashboard />} />
 

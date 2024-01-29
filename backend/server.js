@@ -77,6 +77,32 @@ app.post("/college/register", async (req, res) => {
   }
 });
 
+app.post("/CollegeLogin", async (req, res) => {
+  try {
+    const data = req.body;
+
+    const sc = await College.findOne({
+      username: data.username,
+      password: data.password,
+    });
+
+    if (sc) {
+      res.status(200).send({
+        message: "Data found successfully",
+        id: sc._id,
+        userName: sc.username,
+        collegename: sc.collegename,
+        collegeId: sc.collegeId,
+      });
+    } else {
+      res.status(404).send({ message: "Data not found" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: "Internal server error" });
+  }
+});
+
 app.post("/contact", async (req, res) => {
   try {
     const { fullname, email, message } = req.body;
@@ -118,7 +144,15 @@ app.post("/adminLogin", async (req, res) => {
       password: data.password,
     });
     if (sc) {
-      res.status(200).send({ message: "Data found successfully", id: sc._id, userName:sc.username, collegename:sc.collegename, collegeId:sc.collegeId });
+      res
+        .status(200)
+        .send({
+          message: "Data found successfully",
+          id: sc._id,
+          userName: sc.username,
+          collegename: sc.collegename,
+          collegeId: sc.collegeId,
+        });
     } else {
       res.status(404).send({ message: "Data not found" });
     }
