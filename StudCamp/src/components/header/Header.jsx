@@ -19,8 +19,8 @@ const Header = () => {
   
 
   const handleLogout = () => {
-    // let emptdata = localStorage.setItem("logedAdminId", "");
-    //  let clgdata = localStorage.setItem("CollegeAdminId", "");
+    uniUser =  localStorage.setItem("logedAdminId", "");
+    uniUser = localStorage.setItem("CollegeAdminId", "");
  
 
 
